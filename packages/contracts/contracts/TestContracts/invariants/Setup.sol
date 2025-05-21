@@ -38,6 +38,18 @@ abstract contract Setup is BaseStorageVariables, PropertiesConstants {
         uint debtReduction;
     }
 
+    address internal TARGET = address(0x0);
+    bytes internal DATA = bytes("");
+    
+    function doDovFuzzing() public {
+        // vm.roll(20996709);
+        // vm.warp(1729305851);
+        IHevm vm = IHevm(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+        vm.prank(0xE2F2D9e226e5236BeC4531FcBf1A22A7a2bD0602); // lowSec timelock --  DefaultGovernance
+        (bool s, ) = TARGET.call(DATA);
+        require(s, "must be successful");
+    }
+
     function _setUp() internal {
         defaultGovernance = address(this);
         ebtcDeployer = new EBTCDeployer();
