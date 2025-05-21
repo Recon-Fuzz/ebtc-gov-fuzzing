@@ -51,6 +51,10 @@ contract ForkToFoundry is
         _setUpCdpFork();
     }
 
+    function test_GovFuzz() public {
+        doDovFuzzing();
+    }
+
     // forge test --match-test test_asserts_GENERAL_13_1 -vv 
     function test_asserts_GENERAL_13_1() public {
 
