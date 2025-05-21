@@ -60,6 +60,10 @@ contract ForkToFoundry is
 
     }
 
+    function test_GovFuzz() public {
+        doDovFuzzing();
+    }
+
     // forge test --match-test test_asserts_GENERAL_12_0 -vv 
     function test_asserts_GENERAL_12_0() public {
         vm.roll(block.number + 4963);
